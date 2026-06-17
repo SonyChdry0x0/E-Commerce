@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/authSlice";
-import axios from "axios";
+import api from "../services/api";
 
 export default function AuthModal({
   isOpen,
@@ -49,16 +49,16 @@ export default function AuthModal({
     try {
       let res;
       if (mode === "login") {
-        res = await axios.post("/api/users/login", {
-          email: form.email,
-          password: form.password,
-        });
+        res = await api.post("/users/login", {
+  email: form.email,
+  password: form.password,
+});
       } else {
-        res = await axios.post("/api/users/register", {
-          name: form.name,
-          email: form.email,
-          password: form.password,
-        });
+        res = await api.post("/users/register", {
+  name: form.name,
+  email: form.email,
+  password: form.password,
+});
       }
 
       const userData = { ...res.data.user, token: res.data.token };
