@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Theme variables ────────────────────────────────────────────────────────── */
+:root {
+  --bg-primary:        #ffffff;
+  --bg-secondary:      #f4f4f5;
+  --bg-card:           rgba(0, 0, 0, 0.02);
+  --bg-card-hover:     rgba(0, 0, 0, 0.04);
+  --bg-ticker:         rgba(0, 0, 0, 0.02);
+  --bg-featured:       rgba(0, 0, 0, 0.015);
+  --bg-glass:          rgba(255, 255, 255, 0.6);
+  --border-subtle:     rgba(0, 0, 0, 0.08);
+  --border-card:       rgba(0, 0, 0, 0.07);
+  --text-primary:      #09090b;
+  --text-secondary:    #52525b;
+  --text-muted:        #71717a;
+}
+
+
+
+/* ── Smooth theme transition on everything ──────────────────────────────────── */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+/* Exclude transitions on elements that have their own animations */
+[class*="animate-"],
+[class*="motion"] {
+  transition: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+.nav-luxora {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+}
