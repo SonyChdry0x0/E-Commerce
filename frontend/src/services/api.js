@@ -52,12 +52,9 @@
 
 import axios from 'axios';
 
-// Detect if running on localhost or a network device
-const BASE = window.location.hostname === 'localhost'
-  ? 'http://localhost:8080'
-  : `http://${window.location.hostname}:8080`;
-
-const api = axios.create({ baseURL: `${BASE}/api` });
+const api = axios.create({
+  baseURL: 'https://dipe-fashion.onrender.com/api'
+});
 
 api.interceptors.request.use(config => {
   const token = localStorage.getItem('token');
