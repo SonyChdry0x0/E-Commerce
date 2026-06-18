@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/cartSlice";
 
-const BACKEND_URL = "http://localhost:8080";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
 
 const gradientPrimary = "linear-gradient(135deg, #7c3aed, #ec4899)";
 
@@ -35,7 +35,7 @@ export default function ProductPage() {
     const fetchProduct = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`/api/products/${id}`, {
+        const response = await fetch(`${BACKEND_URL}/api/products/${id}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -50,7 +50,7 @@ export default function ProductPage() {
         setProduct(data);
 
         try {
-          const recRes  = await fetch(`/api/products?category=${data.category}&limit=4`);
+          const recRes  = await fetch(`${BACKEND_URL}/api/products?category=${data.category}&limit=4`);
           const recData = await recRes.json();
           setRecommendations(
             (Array.isArray(recData) ? recData : recData.products || [])
